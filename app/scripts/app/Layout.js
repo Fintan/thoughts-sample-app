@@ -12,7 +12,7 @@ define(function (require) {
 
 		template: 'Layout',
 
-		className: 'layout',
+		className: 'layout container-fluid',
 
 		regions: {
 			'menuArea': '#menuArea',
