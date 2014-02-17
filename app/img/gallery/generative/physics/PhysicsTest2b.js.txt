@@ -1,0 +1,59 @@
+define(function (require) {
+	'use strict';
+	var ParticleSystem = require('traer/ParticleSystem');
+	var PIXI = require('pixi');
+	var ArrayList = require('vendor/processing/Objects/ArrayList');
+	var Line = require('./Line');
+	var PMath = require('utils/PMath');
+
+	var PhysicsTest = function() {};
+
+	PhysicsTest.prototype = {
+
+		setup: function() {
+
+			this.physics = new ParticleSystem();
+
+			this.circleCentre = this.physics.makeParticle(0.3, this.gameWidth/2, this.gameHeight/2);
+
+			this.makeParticles();
+			this.line = new Line(this.physics, this.points, {x: this.gameWidth/2, y: this.gameHeight/2 });
+			this.gameStage.addChild(this.line);
+			this.line.alpha = 0.1;
+
+		},
+
+		makeParticles: function() {
+
+			var twoPi = Math.PI * 2;
+			var incre = twoPi/40;
+			var radius = 200;
+			var middle = this.gameHeight/2;
+			var centre = this.gameWidth/2;
+
+			this.points = new ArrayList();
+
+			for(var radian=0; radian<=twoPi; radian+=incre) {
+
+				var x = centre + radius * Math.sin(radian);
+				var y = middle + radius * Math.cos(radian);
+				var p = this.physics.makeParticle(0.1, x, y);
+				this.physics.makeAttraction(p, this.circleCentre, PMath.random(50000, 500000), 500);
+				this.points.add(p);
+
+			}
+
+		},
+
+		update: function() {
+
+			this.physics.tick();
+
+			this.line.draw();
+
+		}
+
+	};
+
+	return PhysicsTest; 
+});

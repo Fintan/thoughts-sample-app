@@ -1,0 +1,246 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+ 
+body {
+
+	@media #{$mobilePortrait}, #{$tabletLandscape} {
+
+	background: url(../img/bg.jpg) repeat;
+
+	}
+
+	@media #{$desktop}, #{$desktopSmall}, #{$tabletPortrait} {
+
+	/*background: url(../img/bg.jpg) repeat-y top right, 
+				url(../img/dbg.jpg) repeat top left;*/
+		
+	background: url(../img/bg.jpg) repeat;
+	
+	}
+
+
+	color: $main-color;
+	border: none;
+}
+
+#content {
+
+	@media #{$desktop} {
+		/*min-height: 600px;*/
+		min-height: 100%;
+	}
+
+	@media #{$desktop}, #{$desktopSmall}, #{$tabletPortrait} {
+
+		/*@include boxShadowMulti((-3px -1px 2px rgba(0,0,0,0.95)));
+		background: url(../img/bg.jpg) repeat;*/
+		filter: none;
+		padding: 25px 25px 25px 40px;
+		/*margin: -25px -4px;*/
+		position: relative;
+		z-index: 1;
+		
+	}
+
+	@media #{$tabletPortrait}  {
+
+		//@include boxShadowMulti((-2px -1px 2px rgba(0,0,0,0.95)));
+		z-index: 1px;
+
+	}
+
+	@media #{$tabletLandscape}, #{$mobilePortrait} , #{$mobileAllSizes}  {
+
+		background: transparent;
+
+	}
+
+	margin-top: -42px;
+
+}
+
+a {
+	color: #646464;
+}
+
+hr {
+  	margin: 20px 0;
+  	border: 0;
+  	border-top: 1px solid #e0dfdf;
+  	border-bottom: 1px solid #fefefe;
+}
+
+
+
+h1 {
+	font-size: 24px;
+	line-height: 24px;
+}
+
+h2 {
+	font-size: 16px;
+	line-height: 16px;
+}
+
+h3 {
+	font-size: 15px;
+	line-height: 15px;
+}
+
+h4 {
+	font-size: 14px;
+	line-height: 14px;
+}
+
+h5 {
+	font-size: 13px;
+	line-height: 13px;
+}
+
+h6 {
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.green {
+	color: #78CD51;
+}
+
+.red {
+	color: #FA603D;
+}
+
+.blue {
+	color: #67C2EF;
+}
+
+.yellow {
+	color: #FABB3D;
+}
+
+.white-background {
+	background-color: #FFF;
+}
+
+.greybox {
+	width:100%;
+	background-color:lightgray;
+	label {
+		padding:4px;
+	}
+}
+
+.well {
+	border: 1px solid #ddd;
+	background-color: #f6f6f6;
+	@include boxShadow(none);
+	@include borderRadius(2px);
+}
+
+.brand img {
+	margin: -12px 0px -5px 0px;
+}
+
+a.brand span {
+	color: #fff;
+	text-shadow: 1px 1px 2px #0a0c0e;
+}
+
+@media #{$mobilePortrait} {
+	
+	table,
+	.pagination {
+		font-size: 10px;
+	}
+	
+	.pagination {
+		padding: 5px;
+	}
+
+}
+
+@media #{$mobilePortrait}, #{$mobileAllSizes} {
+
+	.pull-right {
+		width: 100%;
+		margin: 10px auto;
+		text-align: center;
+	}
+
+}
+
+ul.notifications li,
+ul.tasks li,
+ul.messages li{
+	width: 260px;
+}
+
+ul.notifications li .avatar img,
+ul.tasks li .avatar img,
+ul.messages li .avatar img {
+	float: left;
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	@include borderRadius(4px);
+}
+
+
+ul.messages li .header {
+	display: block;
+}
+
+ul.messages li .header .from {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+ul.notifications li .time,
+ul.tasks li .header .percent,
+ul.messages li .header .time {
+	font-size: 11px;
+	font-weight: bold;
+	font-style: italic;
+	position: absolute;
+	right: 5px;
+}
+ul.tasks li .title,
+ul.notifications li .message {
+	font-size: 12px;
+}
+
+ul.notifications li.warning a {
+	color: #FA5833;
+}
+ 
+ul.messages li .message {
+	font-size: 11px;
+}
+
+.fuelux .popover.wide {
+   max-width: 600px;
+}
+
+.fuelux .popover-content.smalltext {
+   font-size: 11px;
+}
+
+#loading{
+    position:fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background:rgba(0,0,0,0.3);
+}
+
+.height-100 {
+	height: 100%;
+}
+
+.ie10-iframe-height {
+	height: 590px;
+}
