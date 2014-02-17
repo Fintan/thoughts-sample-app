@@ -1,12 +1,13 @@
 define(function (require) {
 	'use strict';
 	var $ = require('jquery');
-	var _ = require("underscore");
-	var Backbone = require("backbone");
-	var Marionette = require("marionette");
-	var Vent = require("utils/Vent");
+	var _ = require('underscore');
+	var Backbone = require('backbone');
+	var Marionette = require('marionette');
+	var Vent = require('utils/Vent');
 	//var GalleryLayout = require('./gallery/GalleryLayout');
-	
+	var Menu = require('./menu/Menu');
+
 	return Backbone.Marionette.Layout.extend({
 
 		template: 'Layout',
@@ -14,6 +15,7 @@ define(function (require) {
 		className: 'layout',
 
 		regions: {
+			'menuArea': '#menuArea',
 			'contentArea': '#contentArea'
 		},
 
@@ -44,6 +46,18 @@ define(function (require) {
 			this.lastId = viewId;
 			
 			return view;
+		},
+
+		showMenu: function() {
+
+			this.menuArea.show(new Menu());
+
+		},
+
+		onRender: function() {
+
+			this.showMenu();
+
 		},
 
 		onClose: function() {
