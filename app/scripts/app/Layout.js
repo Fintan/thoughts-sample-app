@@ -5,8 +5,8 @@ define(function (require) {
 	var Backbone = require('backbone');
 	var Marionette = require('marionette');
 	var Vent = require('utils/Vent');
-	//var GalleryLayout = require('./gallery/GalleryLayout');
 	var Menu = require('./menu/Menu');
+	var UserInfo = require('./userinfo/UserInfo');
 
 	return Backbone.Marionette.Layout.extend({
 
@@ -39,8 +39,8 @@ define(function (require) {
 
 			var view;
 
-			if(viewId === 'gallery') {
-				//view = new GalleryLayout(_.extend({context: this.options.context}, options || {}));
+			if(viewId === 'userinfo') {
+				view = new UserInfo(_.extend({context: this.options.context}, options || {}));
 			}
 
 			this.lastId = viewId;

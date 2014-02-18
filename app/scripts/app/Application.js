@@ -36,7 +36,7 @@ define(function (require, exports, module) {
 		start: function() {
 			
 			Backbone.history.start();
-			//Vent.region.trigger('Layout:changeView', 'gallery');
+			Vent.region.trigger('Layout:changeView', 'userinfo');
 			
 		}
 
