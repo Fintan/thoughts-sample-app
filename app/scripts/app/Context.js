@@ -1,5 +1,7 @@
 define(function (require, exports, module) {
 	'use strict';
+	var User = require('./userinfo/User');
+
 	var Context = function(){
 
 		this.createContext();
@@ -11,6 +13,9 @@ define(function (require, exports, module) {
 		createContext: function() {	
 			
 			//instantiate models here
+			this.user = new User();
+
+			window.context = this; //for debug
 			
 		}
 
