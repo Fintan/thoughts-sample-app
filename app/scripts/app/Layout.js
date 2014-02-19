@@ -22,6 +22,7 @@ define(function (require) {
 		initialize: function(options) {
 
 			Vent.region.on('Layout:changeView', this.onChangeView, this);
+			this.injector = options.context.injector;
 	
 		},
 
@@ -40,10 +41,12 @@ define(function (require) {
 			var view;
 
 			if(viewId === 'userinfo') {
-				view = new UserInfo(_.extend({context: this.options.context}, options || {}));
+				//view = new UserInfo(_.extend({context: this.options.context}, options || {}));
+				view = this.injector.createView(UserInfo, options || {});
 			}
 
 			this.lastId = viewId;
+			window.view = view;
 			
 			return view;
 		},

@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
 	'use strict';
+	var Injector = require('utils/Injector');
 	var User = require('./userinfo/User');
 
 	var Context = function(){
@@ -11,9 +12,15 @@ define(function (require, exports, module) {
 	Context.prototype = {
 
 		createContext: function() {	
-			
+
 			//instantiate models here
 			this.user = new User();
+
+			//setup injection mappings
+			this.injector = new Injector();
+			this.injector.addMapping('user', _.bind(function() {
+				return this.user;
+			}, this));
 
 			window.context = this; //for debug
 			

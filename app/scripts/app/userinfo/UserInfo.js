@@ -1,7 +1,7 @@
 define(function (require) {
 	'use strict';
-	var JST = require('jst');
 	var Backbone = require('backbone');
+	var Marionette = require('marionette');
 	
 	return Backbone.Marionette.ItemView.extend({
 
@@ -16,10 +16,8 @@ define(function (require) {
 			'#newUserAge': 'age'
 		},
 
-		initialize: function(options) {
-
-			this.model = options.context.user;
-
+		$inject: {
+			'model': 'user'
 		},
 
 		onRender: function() {
