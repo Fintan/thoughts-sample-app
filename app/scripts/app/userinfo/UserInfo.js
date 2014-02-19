@@ -3,14 +3,17 @@ define(function (require) {
 	var JST = require('jst');
 	var Backbone = require('backbone');
 	
-	return Backbone.View.extend({
+	return Backbone.Marionette.ItemView.extend({
 
 		id: 'userInfo',
 
+		template: 'UserInfo',
+
 		tagName: 'section',
 
-		events: {
-			'change input': 'onInput'
+		bindings: {
+			'#newUserName': 'name',
+			'#newUserAge': 'age'
 		},
 
 		initialize: function(options) {
@@ -19,25 +22,9 @@ define(function (require) {
 
 		},
 
-		onInput: function(e) {
+		onRender: function() {
 
-			var $el = $(e.target);
-			var id = $el.attr('id');
-
-			if(id === "newUserName") {
-
-				this.model.set('name', $el.val());
-
-			}else if(id === "newUserAge") {
-
-				this.model.set('age', $el.val());
-				
-			}
-		},
-
-		render: function() {
-
-			this.$el.html(JST['UserInfo'](this.model.toJSON()));
+			this.stickit();
 
 		}
 
