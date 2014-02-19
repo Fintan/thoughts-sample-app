@@ -11,7 +11,7 @@ define(function (require) {
 
 		render: function() {
 
-			this.$el.html(JST['Menu']);
+			this.$el.html(JST.Menu());
 
 		}
 

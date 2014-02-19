@@ -50,7 +50,7 @@ module.exports = function (grunt) {
         },
 
         jshint: {
-            files: [yeomanConfig.app+'/**/*.js', '!'+yeomanConfig.app+'/bower/**/*.js', '!' + yeomanConfig.app+ '/scripts/jst.js', '!' + yeomanConfig.app+ '/scripts/vendor/**/*.js'],
+            files: [yeomanConfig.app+'/**/*.js', '!'+yeomanConfig.app+'/bower/**/*.js', '!'+yeomanConfig.app+'/css/**/*.js', '!' + yeomanConfig.app+ '/scripts/jst.js', '!' + yeomanConfig.app+ '/scripts/vendor/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
