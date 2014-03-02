@@ -17,6 +17,7 @@ module.exports = function (grunt) {
         preserveLicenseComments: false,
         useStrict: true,
         wrap: true,
+        wrapShim: true, 
         done:function(done, output) {
             grunt.task.run(['copy:require_to_dist']);
             done();
