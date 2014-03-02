@@ -2,6 +2,7 @@ define(function (require, exports, module) {
 	'use strict';
 	var Injector = require('utils/Injector');
 	var User = require('./userinfo/User');
+	var Backbone = require('backbone');
 	
 	var Context = function(){
 
@@ -20,10 +21,17 @@ define(function (require, exports, module) {
 			//instantiate models here
 			this.user = new User();
 
+			this.state = new Backbone.Model();
+
 			//setup injection mappings
 			this.injector = new Injector();
+			
 			this.injector.addMapping('user', _.bind(function() {
 				return this.user;
+			}, this));
+
+			this.injector.addMapping('state', _.bind(function() {
+				return this.state;
 			}, this));
 
 			window.context = this; //for debug

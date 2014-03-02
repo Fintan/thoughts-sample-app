@@ -1,21 +1,33 @@
 define(function (require) {
 	'use strict';
-	var JST = require('jst');
 	var Backbone = require('backbone');
+	var Marionette = require('marionette');
 	
-	return Backbone.View.extend({
+	return Backbone.Marionette.ItemView.extend({
 
 		tagName: 'ul',
 
+		template: 'Menu',
+
 		className: 'nav navbar-nav',
 
-		/*attributes: {
-			'data-toggle':'buttons'
-		},*/
+		$inject: {
+			'model': 'state'
+		},
 
-		render: function() {
+		bindings: {
+			'li': {
+				observe: 'activeMenuItem',
+				update: function($el, val) { 
+					$el.removeClass('active');
+					$el.find('a[href="#'+ val +'"]').parent().addClass('active');
+				}
+			}
+		},
 
-			this.$el.html(JST.Menu());
+		onRender: function() {
+
+			this.stickit();
 
 		}
 
