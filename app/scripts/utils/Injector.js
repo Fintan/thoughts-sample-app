@@ -60,6 +60,30 @@ define(function (require) {
 		*/
 		createView: function (Constructor, options) {
 
+			return this.createType(Constructor, options);
+
+		},
+
+		/**
+		* Instantiates the given constructor providing it with its dependencies.
+		* @param {Function} Constructor The Backbone Router type.
+		* @param {Object} options optional options object literal to add dependencies to.
+		* @return {!Object} An instance of the constructor.
+		*/
+		createRouter: function (Constructor, options) {
+
+			return this.createType(Constructor, options);
+
+		},
+
+		/**
+		* Instantiates the given constructor providing it with its dependencies.
+		* @param {Function} Constructor The Type.
+		* @param {Object} options optional options object literal to add dependencies to.
+		* @return {!Object} An instance of the constructor.
+		*/
+		createType: function (Constructor, options) {
+
 			var Dependant = function () {};
 			Dependant.prototype = Constructor.prototype;
 

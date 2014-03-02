@@ -18,8 +18,7 @@ define(function (require, exports, module) {
 
 		setupRouters: function() {
 
-			this.context.injector.createView(Router, { context: this.context });
-			//new Router({ context: this.context });
+			this.context.injector.createRouter(Router, { context: this.context });
 			
 		},
 
