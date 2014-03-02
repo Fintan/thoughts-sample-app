@@ -9,6 +9,10 @@ define(function (require) {
 
 		className: 'nav navbar-nav',
 
+		/*attributes: {
+			'data-toggle':'buttons'
+		},*/
+
 		render: function() {
 
 			this.$el.html(JST.Menu());

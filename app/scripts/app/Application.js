@@ -5,6 +5,7 @@ define(function (require, exports, module) {
 	var Vent = require('utils/Vent');
 	var Context = require('./Context');
 	var Layout = require('./Layout');
+	var Router = require('./Router');
 	
 	var app = {
 
@@ -17,7 +18,7 @@ define(function (require, exports, module) {
 
 		setupRouters: function() {
 
-			//new SampleRouter({ context: this.context });
+			new Router({ context: this.context });
 			
 		},
 
@@ -36,7 +37,6 @@ define(function (require, exports, module) {
 		start: function() {
 			
 			Backbone.history.start();
-			Vent.region.trigger('Layout:changeView', 'userinfo');
 			
 		}
 

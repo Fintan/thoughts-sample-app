@@ -29,11 +29,7 @@ define(function (require) {
 
 		onChangeView: function(viewId, options) {
 
-			if(this.lastId === viewId) {
-				this.contentArea.currentView.updateView(options);
-			}else {
-				this.contentArea.show(this.retrieveView(viewId, options));
-			}
+			this.contentArea.show(this.retrieveView(viewId, options));
 			
 		},
 
@@ -47,15 +43,12 @@ define(function (require) {
 				view = this.injector.createView(ThoughtsScreen, options || {});
 			}
 
-			this.lastId = viewId;
-			window.view = view;
-			
 			return view;
 		},
 
-		showMenu: function() {
+		showMenu: function(viewId, options) {
 
-			this.menuArea.show(new Menu());
+			this.menuArea.show(this.injector.createView(Menu, options || {}));
 
 		},
 
