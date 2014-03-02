@@ -7,6 +7,7 @@ define(function (require) {
 	var Vent = require('utils/Vent');
 	var Menu = require('./menu/Menu');
 	var UserInfo = require('./userinfo/UserInfo');
+	var ThoughtsScreen = require('./thoughts/ThoughtsScreen');
 
 	return Backbone.Marionette.Layout.extend({
 
@@ -41,8 +42,9 @@ define(function (require) {
 			var view;
 
 			if(viewId === 'userinfo') {
-				//view = new UserInfo(_.extend({context: this.options.context}, options || {}));
 				view = this.injector.createView(UserInfo, options || {});
+			}else if(viewId === 'thoughtsscreen') {
+				view = this.injector.createView(ThoughtsScreen, options || {});
 			}
 
 			this.lastId = viewId;
