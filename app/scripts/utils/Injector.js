@@ -34,18 +34,20 @@ define(function (require) {
 		* @param {string} key The key of the service to get.
 		* @return {!Object} The service.
 		*/
-		getMapping: function (key) {
+		getMapping: function (key, valueOf, view) {
 			
 			var service = this.defaults[key];
 
 			if (!service) {
 				var factory = this.mappings[key];
 				if (!factory) {
+					console.warn('dependency\'', key,  '\' is undefined for', view.id, '.$inject {',valueOf, ':', key, '}', view.$inject);
 					return null;
 				}
 				service = factory();
 				this.defaults[key] = service;
 			}
+
 			return service;
 
 		},
@@ -80,8 +82,8 @@ define(function (require) {
 
 			options = options || {};
 
-			_.each(items, function(item, key) {
-				options[key] = this.getMapping(item);
+			_.each(items, function(value, key) {
+				options[key] = this.getMapping(value, key, instance);
 			}, this);
 
 			Constructor.call(instance, options);
