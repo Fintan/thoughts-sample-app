@@ -19,7 +19,12 @@ define(function (require) {
 			detailContainer: '#detailContainer'
 		},
 
+		events: {
+			'click #addThoughtBtn': 'addThought'
+		},
+
 		$inject: {
+			'collection': 'thoughts',
 			'injector': '$injector'
 		},
 
@@ -29,10 +34,20 @@ define(function (require) {
 	
 		},
 
+		addThought: function(e) {
+			//show empty detail view
+			console.log('add');
+		},
+
 		onRender: function(viewId, options) {
 
 			this.listContainer.show(this.injector.createView(ThoughtsList));
-			this.detailContainer.show(this.injector.createView(ThoughtDetail));
+
+			//TODO: only render detail area when there is at least one thought, 
+			//default to first one, unless specified as something else in url 
+			if(this.collection.length > 0) {
+				this.detailContainer.show(this.injector.createView(ThoughtDetail));
+			}
 			
 		}
 

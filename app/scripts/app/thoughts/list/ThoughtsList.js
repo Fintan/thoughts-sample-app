@@ -13,7 +13,11 @@ define(function (require) {
 
 		itemView: ThoughtsListItem,
 
-		emptyView: ThoughtsEmptyList
+		emptyView: ThoughtsEmptyList,
+
+		$inject: {
+			'collection': 'thoughts'
+		}
 
 	}); 
 

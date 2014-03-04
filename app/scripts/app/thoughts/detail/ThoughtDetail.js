@@ -5,7 +5,18 @@ define(function (require) {
 	
 	return Backbone.Marionette.ItemView.extend({
 
-		template: 'ThoughtDetail'
+		template: 'ThoughtDetail',
+
+		className: 'row',
+
+		events: {
+			'click #removeBtn': 'onRemove'
+		},
+
+		onRemove: function(e) {
+			console.log('remove');
+			//this.collection.remove(this.model);
+		}
 
 	}); 
 
