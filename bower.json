@@ -18,7 +18,8 @@
     "backbone-route-filter": "~0.1.0",
     "requirejs-plugins": "~1.0.2",
     "PreloadJS": "*",
-    "bootstrap": "~3.1.1"
+    "bootstrap": "~3.1.1",
+    "backbone.localstorage": "~1.1.7"
   },
   "devDependencies": {}
 }

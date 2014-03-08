@@ -10,6 +10,7 @@ require.config({
 		'backbone.stickit': '../bower/backbone.stickit/backbone.stickit',
 		'backbone-deep-model': '../bower/backbone-deep-model/distribution/deep-model',
 		'backbone-route-filter': '../bower/backbone-route-filter/backbone-route-filter',
+		'backbone.localstorage': '../bower/backbone.localstorage/backbone.localstorage',
 		'bootstrap': '../bower/bootstrap/dist/js/bootstrap',
 		'handlebars': '../bower/handlebars/handlebars',
 		'domReady': '../bower/requirejs-domready/domReady',
@@ -29,7 +30,8 @@ require.config({
 		},
 		'backbone.stickit': ["underscore", "jquery", "backbone"],
 		'backbone-deep-model': ["underscore", "jquery", "backbone"],
-		'backbone-route-filter': ["backbone"],
+		'backbone-route-filter': ['backbone'],
+		'backbone.localstorage': ['backbone'],
 		handlebars: {
 			exports: 'Handlebars'
 		},
