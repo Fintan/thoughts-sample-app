@@ -16,6 +16,14 @@ define(function (require) {
 			'#description': 'description'
 		},
 
+		events: {
+			'click': 'onSelect'
+		},
+
+		onSelect: function(e) {
+			this.trigger('select');
+		},
+
 		onRender: function() {
 			this.stickit();
 		}
