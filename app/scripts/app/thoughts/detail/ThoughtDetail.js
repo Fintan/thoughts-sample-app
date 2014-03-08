@@ -13,9 +13,18 @@ define(function (require) {
 			'click #removeBtn': 'onRemove'
 		},
 
+		bindings: {
+			'#inputTitle': 'title',
+			'#inputDetails': 'description'
+		},
+
 		onRemove: function(e) {
 			console.log('remove');
 			//this.collection.remove(this.model);
+		},
+
+		onRender: function() {
+			this.stickit();
 		}
 
 	}); 

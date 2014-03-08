@@ -9,7 +9,16 @@ define(function (require) {
 
 		className: 'list-group-item',
 
-		tagName: 'a'
+		tagName: 'a',
+
+		bindings: {
+			'#title': 'title',
+			'#description': 'description'
+		},
+
+		onRender: function() {
+			this.stickit();
+		}
 
 	}); 
 
