@@ -48,7 +48,7 @@ define(function (require) {
 
 		addThought: function(e) {
 			
-			this.collection.create({});
+			this.collection.create({}, { at: 0 });
 			
 		},
 

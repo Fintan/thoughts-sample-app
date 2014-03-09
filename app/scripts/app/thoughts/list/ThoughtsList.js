@@ -4,6 +4,7 @@ define(function (require) {
 	var Marionette = require('marionette');
 	var ThoughtsListItem = require('./ThoughtsListItem');
 	var ThoughtsEmptyList = require('./ThoughtsEmptyList');
+	var collectionAppendAt = require('utils/collectionAppendAt');
 	
 	return Backbone.Marionette.CollectionView.extend({
 
@@ -14,6 +15,8 @@ define(function (require) {
 		itemView: ThoughtsListItem,
 
 		emptyView: ThoughtsEmptyList,
+
+		appendHtml: collectionAppendAt,
 
 		bindings: {
 			':first-child': {
