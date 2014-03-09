@@ -15,6 +15,19 @@ define(function (require) {
 
 		emptyView: ThoughtsEmptyList,
 
+		bindings: {
+			':first-child': {
+				observe: 'selectedItem',
+				update: function($el, val) { 
+					if(val) {
+						this.$el.find('a').removeClass('active');
+						var view = this.children.findByModel(this.collection.findWhere({id: val}));
+						view.$el.addClass('active');
+					}
+				}
+			}
+		},
+
 		$inject: {
 			'collection': 'thoughts',
 			'model': 'state'
@@ -23,7 +36,6 @@ define(function (require) {
 		initialize: function(options) {
 
 			this.on('itemview:select', this.onSelectItem, this);
-			this.listenTo(this.model, 'change:selectedItem', this.onSelectedItem);
 
 		},
 
@@ -33,20 +45,9 @@ define(function (require) {
 			
 		},
 
-		onSelectedItem: function(model, id) {
-			
-			this.$el.find('a').removeClass('active');
-			//id === this.state.get('selectedItem')
-			var view = this.children.findByModel(this.collection.findWhere({id: id}));
-			view.$el.addClass('active');
-
-		},
-
 		onRender: function() {
 
-			if(this.model.get('selectedItem')) {
-				this.onSelectedItem(null, this.model.get('selectedItem'));
-			}
+			this.stickit();
 
 		},
 

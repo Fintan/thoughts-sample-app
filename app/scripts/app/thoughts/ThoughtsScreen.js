@@ -23,18 +23,27 @@ define(function (require) {
 			'click #addThoughtBtn': 'addThought'
 		},
 
+		bindings: {
+			':first-child': {
+				observe: 'selectedItem',
+				update: function($el, val) { 
+					if(val) {
+						this.detailContainer.show(this.injector.createView(ThoughtDetail, { model: this.collection.get(val) }));
+					}
+				}
+			}
+		},
+
 		$inject: {
 			'collection': 'thoughts',
-			'state': 'state',
+			'model': 'state',
 			'injector': '$injector'
 		},
 
 		initialize: function(options) {
 
 			this.injector = options.injector;
-			this.state = options.state;
-			this.listenTo(this.state, 'change:selectedItem', this.onSelectedItem);
-	
+			
 		},
 
 		addThought: function(e) {
@@ -50,10 +59,8 @@ define(function (require) {
 
 		onRender: function(viewId, options) {
 
+			this.stickit();
 			this.listContainer.show(this.injector.createView(ThoughtsList));
-			if(this.state.get('selectedItem')) {
-				this.onSelectedItem(null, this.state.get('selectedItem'));
-			}
 			
 		}
 
