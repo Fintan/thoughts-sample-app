@@ -42,6 +42,14 @@ define(function (require) {
 
 		},
 
+		onRender: function() {
+
+			if(this.model.get('selectedItem')) {
+				this.onSelectedItem(null, this.model.get('selectedItem'));
+			}
+
+		},
+
 		onClose: function() {
 			this.off(null, null, this);
 		}

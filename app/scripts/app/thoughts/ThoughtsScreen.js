@@ -51,6 +51,9 @@ define(function (require) {
 		onRender: function(viewId, options) {
 
 			this.listContainer.show(this.injector.createView(ThoughtsList));
+			if(this.state.get('selectedItem')) {
+				this.onSelectedItem(null, this.state.get('selectedItem'));
+			}
 			
 		}
 
