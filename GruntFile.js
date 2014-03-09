@@ -138,9 +138,8 @@ module.exports = function (grunt) {
                 dest: yeomanConfig.dist +'/scripts/main.js'
             },
             theme_and_structure: {
-                //src: ['app/css/main.css', yeomanConfig.app+'/css/structure/*.css'],
-                src: [yeomanConfig.app+'/css/structure/*.css', 'app/css/main.css'],
-                dest: 'app/css/main.css'
+                src: [yeomanConfig.app+'/css/main.css', yeomanConfig.app+'/css/structure/*.css'],
+                dest: yeomanConfig.app+'/css/main.css'
             }
         },
         handlebars: {

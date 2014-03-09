@@ -7,7 +7,7 @@ define(function (require) {
 
 		template: 'ThoughtsListItem',
 
-		className: 'list-group-item',
+		className: 'thoughts-list-item list-group-item',
 
 		tagName: 'a',
 

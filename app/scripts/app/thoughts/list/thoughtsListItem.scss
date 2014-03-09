@@ -1,0 +1,9 @@
+.thoughts-list-item {
+	
+	p, h4 {
+	    text-overflow : ellipsis;
+	    white-space   : nowrap;
+	    overflow      : hidden;
+	}
+
+}
