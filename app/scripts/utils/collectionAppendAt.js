@@ -16,5 +16,5 @@ define(function (require) {
 			children.eq(index).before(itemView.el);
 		}
 
-	}
+	};
 });

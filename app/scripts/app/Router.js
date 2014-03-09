@@ -12,11 +12,13 @@ define(function (require) {
 		},
 
 		$inject: {
-			'state': 'state'
+			'state': 'state',
+			'thoughts': 'thoughts'
 		},
 
 		initialize: function(options) {
 			this.state = options.state;
+			this.thoughts = options.thoughts;
 		},
 
 		onUserInfo: function() {
@@ -27,6 +29,7 @@ define(function (require) {
 		onThoughts: function() {
 			this.state.set('activeMenuItem', 'thoughts');
 			Vent.region.trigger('Layout:changeView', 'thoughtsscreen');
+			this.thoughts.fetch();
 		}
 
 	});
