@@ -28,17 +28,11 @@ define(function (require, exports, module) {
 			//setup injection mappings
 			this.injector = new Injector();
 
-			this.injector.addMapping('user', _.bind(function() {
-				return this.user;
-			}, this));
+			this.injector.addMapping('user', this.user);
 
-			this.injector.addMapping('thoughts', _.bind(function() {
-				return this.thoughts;
-			}, this));
+			this.injector.addMapping('thoughts', this.thoughts);
 
-			this.injector.addMapping('state', _.bind(function() {
-				return this.state;
-			}, this));
+			this.injector.addMapping('state', this.state);
 
 			window.context = this; //for debug
 			

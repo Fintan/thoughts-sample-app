@@ -39,12 +39,12 @@ define(function (require) {
 			var service = this.defaults[key];
 
 			if (!service) {
-				var factory = this.mappings[key];
-				if (!factory) {
+				
+				var service = _.result(this.mappings, key);
+				if (!service) {
 					console.warn('dependency\'', key,  '\' is undefined for', view.id, '.$inject {',valueOf, ':', key, '}', view.$inject);
 					return null;
 				}
-				service = factory();
 				this.defaults[key] = service;
 			}
 
