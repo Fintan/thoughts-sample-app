@@ -25,12 +25,15 @@ define(function (require) {
 
 		$inject: {
 			'collection': 'thoughts',
+			'state': 'state',
 			'injector': '$injector'
 		},
 
 		initialize: function(options) {
 
 			this.injector = options.injector;
+			this.state = options.state;
+			this.listenTo(this.state, 'change:selectedItem', this.onSelectedItem);
 	
 		},
 
@@ -39,15 +42,15 @@ define(function (require) {
 			console.log('add');
 		},
 
+		onSelectedItem: function(state, id) {
+			
+			this.detailContainer.show(this.injector.createView(ThoughtDetail, { model: this.collection.get(id) }));
+
+		},
+
 		onRender: function(viewId, options) {
 
 			this.listContainer.show(this.injector.createView(ThoughtsList));
-
-			//TODO: only render detail area when there is at least one thought, 
-			//default to first one, unless specified as something else in url 
-			if(this.collection.length > 0) {
-				this.detailContainer.show(this.injector.createView(ThoughtDetail));
-			}
 			
 		}
 
