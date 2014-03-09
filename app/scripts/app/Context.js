@@ -20,10 +20,9 @@ define(function (require, exports, module) {
 			//(2) map to models, 
 
 			//instantiate models here
-			this.user = new User();
-			this.thoughts = new Thoughts(/*[{}, {}, {}]*/);
-
 			this.state = new Backbone.Model();
+			this.user = new User();
+			this.thoughts = new Thoughts([], { state: this.state });
 
 			//setup injection mappings
 			this.injector = new Injector();

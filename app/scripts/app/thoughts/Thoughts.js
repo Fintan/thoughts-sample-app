@@ -8,7 +8,19 @@ define(function (require) {
 
 		model: Thought,
 
-		localStorage: new Backbone.LocalStorage("Thoughts")
+		localStorage: new Backbone.LocalStorage("Thoughts"),
+
+		initialize: function(opt, options) {
+			this.state = options.state;
+		},
+
+		create: function() {
+
+			var model = Backbone.Collection.prototype.create.apply(this, arguments);
+			this.state.set('selectedItem', model.get('id'));
+			return model;
+
+		}
 
 	});
 });

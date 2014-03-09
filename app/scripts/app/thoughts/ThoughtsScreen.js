@@ -47,8 +47,9 @@ define(function (require) {
 		},
 
 		addThought: function(e) {
-			//show empty detail view
-			console.log('add');
+			
+			this.collection.create({});
+			
 		},
 
 		onSelectedItem: function(state, id) {
