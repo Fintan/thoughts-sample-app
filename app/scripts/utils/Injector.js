@@ -40,7 +40,7 @@ define(function (require) {
 
 			if (!service) {
 				
-				var service = _.result(this.mappings, key);
+				service = _.result(this.mappings, key);
 				if (!service) {
 					console.warn('dependency\'', key,  '\' is undefined for', view.id, '.$inject {',valueOf, ':', key, '}', view.$inject);
 					return null;
