@@ -2,6 +2,7 @@ define(function (require) {
 	'use strict';
 	var Backbone = require('backbone');
 	var Thought = require('./Thought');
+	var Tags = require('./tags/Tags');
 	require('backbone.localstorage');
 
 	return Backbone.Collection.extend({
@@ -12,6 +13,7 @@ define(function (require) {
 
 		initialize: function(opt, options) {
 			this.state = options.state;
+			this.tags = new Tags();
 		},
 
 		create: function() {

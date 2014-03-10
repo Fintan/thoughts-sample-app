@@ -6,7 +6,8 @@ define(function (require) {
 
 		defaults: {
 			title: 'A title',
-			description: 'A description'
+			description: 'A description',
+			tags: ''
 		}
 	});
 });

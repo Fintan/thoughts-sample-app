@@ -21,11 +21,12 @@ define(function (require) {
 		bindings: {
 			':first-child': {
 				observe: 'selectedItem',
-				update: function($el, val) { 
+				update: function($el, val) {
 					if(val) {
 						this.$el.find('a').removeClass('active');
 						var view = this.children.findByModel(this.collection.findWhere({id: val}));
-						view.$el.addClass('active');
+						//view may not exist if showCollection() has filtered by tag
+						if(view) { view.$el.addClass('active'); }
 					}
 				}
 			}
@@ -38,6 +39,7 @@ define(function (require) {
 
 		initialize: function(options) {
 
+			this.tag = options.tag;
 			this.on('itemview:select', this.onSelectItem, this);
 
 		},
@@ -46,6 +48,18 @@ define(function (require) {
 
 			this.model.set('selectedItem', view.model.id);
 			
+		},
+
+		//override CollectionView.showCollection in order to only render thoughts that
+		//are tagged by this.tag if it exists
+		showCollection: function(){
+			var ItemView;
+			this.collection.each(function(item, index){
+				if(!this.tag || this.tag ==='All' || item.get('tags').indexOf(this.tag) > -1) {
+					ItemView = this.getItemView(item);
+					this.addItemView(item, ItemView, index);
+				}
+			}, this);
 		},
 
 		onRender: function() {

@@ -8,6 +8,7 @@ define(function (require) {
 	var Menu = require('./menu/Menu');
 	var UserInfo = require('./userinfo/UserInfo');
 	var ThoughtsScreen = require('./thoughts/ThoughtsScreen');
+	var TagsScreen = require('./thoughts/tags/TagsScreen');
 
 	return Backbone.Marionette.Layout.extend({
 
@@ -18,6 +19,12 @@ define(function (require) {
 		regions: {
 			'menuArea': '#menuArea',
 			'contentArea': '#contentArea'
+		},
+
+		screens: {
+			userinfo: UserInfo,
+			thoughtsscreen: ThoughtsScreen,
+			tagsscreen: TagsScreen
 		},
 
 		initialize: function(options) {
@@ -35,15 +42,8 @@ define(function (require) {
 
 		retrieveView: function(viewId, options) {
 
-			var view;
-
-			if(viewId === 'userinfo') {
-				view = this.injector.createView(UserInfo, options || {});
-			}else if(viewId === 'thoughtsscreen') {
-				view = this.injector.createView(ThoughtsScreen, options || {});
-			}
-
-			return view;
+			return this.injector.createView(this.screens[viewId], options || {});
+			
 		},
 
 		showMenu: function(viewId, options) {

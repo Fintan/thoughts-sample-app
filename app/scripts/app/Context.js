@@ -33,6 +33,8 @@ define(function (require, exports, module) {
 
 			this.injector.addMapping('state', this.state);
 
+			this.injector.addMapping('tags', this.thoughts.tags);
+
 			window.context = this; //for debug
 			
 		}

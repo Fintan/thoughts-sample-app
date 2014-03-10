@@ -43,6 +43,7 @@ define(function (require) {
 		initialize: function(options) {
 
 			this.injector = options.injector;
+			this.tag = options.tag;
 			
 		},
 
@@ -61,7 +62,7 @@ define(function (require) {
 		onRender: function(viewId, options) {
 
 			this.stickit();
-			this.listContainer.show(this.injector.createView(ThoughtsList));
+			this.listContainer.show(this.injector.createView(ThoughtsList, { tag: this.tag }));
 			
 		}
 
