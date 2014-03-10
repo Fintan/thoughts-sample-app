@@ -56,7 +56,7 @@ define(function (require) {
 
 				this.tags.each(function(tag) {
 					tag.removeThoughtFromTag(id);
-				}, this)
+				}, this);
 
 				this.state.set('selectedItem', null);
 				this.close();

@@ -18,7 +18,7 @@ define(function (require) {
 			removeThoughtFromTag: function(thoughtId) {
 				var thoughtIds = this.get('thoughtIds');
 				if(_.contains(thoughtIds, thoughtId)) {
-					var thoughtIds = _.without(thoughtIds, thoughtId);
+					thoughtIds = _.without(thoughtIds, thoughtId);
 					this.set('thoughtIds', thoughtIds);
 					this.set('count', this.get('thoughtIds').length);
 					this.save();
