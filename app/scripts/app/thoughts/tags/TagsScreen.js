@@ -15,8 +15,20 @@ define(function (require) {
 
 		emptyView: NoTags,
 
+		itemViewOptions: function() {
+			return {
+				foo: "bar",
+				state: this.state
+			}
+		},
+
 		$inject: {
-			'collection': 'tags'
+			'collection': 'tags',
+			'state': 'state'
+		},
+
+		initialize: function(options) {
+			this.state = options.state;
 		}
 
 	}); 
