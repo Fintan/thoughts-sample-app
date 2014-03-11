@@ -19,7 +19,7 @@ define(function (require) {
 			return {
 				foo: "bar",
 				state: this.state
-			}
+			};
 		},
 
 		$inject: {
