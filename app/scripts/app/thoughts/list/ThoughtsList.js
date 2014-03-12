@@ -32,10 +32,10 @@ define(function (require) {
 			}
 		},
 
-		$inject: {
+		/*$inject: {
 			'collection': 'thoughts',
 			'model': 'state'
-		},
+		},*/
 
 		initialize: function(options) {
 

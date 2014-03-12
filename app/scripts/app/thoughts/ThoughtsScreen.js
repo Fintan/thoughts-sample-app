@@ -26,9 +26,9 @@ define(function (require) {
 		bindings: {
 			':first-child': {
 				observe: 'selectedItem',
-				update: function($el, val) { 
-					if(val) {
-						this.detailContainer.show(this.injector.createView(ThoughtDetail, { model: this.collection.get(val) }));
+				update: function($el, id) { 
+					if(id) {
+						this.onSelectedItem(id);
 					}
 				}
 			}
@@ -37,6 +37,7 @@ define(function (require) {
 		$inject: {
 			'collection': 'thoughts',
 			'model': 'state',
+			'tags': 'tags',
 			'injector': '$injector'
 		},
 
@@ -44,6 +45,7 @@ define(function (require) {
 
 			this.injector = options.injector;
 			this.tag = options.tag;
+			this.tags = options.tags;
 			
 		},
 
@@ -53,16 +55,24 @@ define(function (require) {
 			
 		},
 
-		onSelectedItem: function(state, id) {
+		onSelectedItem: function(id) {
 			
-			this.detailContainer.show(this.injector.createView(ThoughtDetail, { model: this.collection.get(id) }));
+			this.detailContainer.show(new ThoughtDetail({ 
+				model: this.collection.get(id),
+				state: this.model,
+				tags: this.tags
+			}));
 
 		},
 
 		onRender: function(viewId, options) {
 
 			this.stickit();
-			this.listContainer.show(this.injector.createView(ThoughtsList, { tag: this.tag }));
+			this.listContainer.show(new ThoughtsList({ 
+				tag: this.tag, 
+				collection: this.collection,
+				model: this.model 
+			}));
 			
 		}
 

@@ -22,14 +22,10 @@ define(function (require) {
 			'#inputTags': 'tags'
 		},
 
-		$inject: {
-			'state': 'state',
-			'tags': 'tags'
-		},
-
 		initialize: function(options) {
 			this.state = options.state;
 			this.tags = options.tags;
+			console.log('options', options);
 		},
 
 		onSave: function(e) {
